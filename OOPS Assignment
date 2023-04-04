@@ -1,0 +1,184 @@
+Q1. Explain Class and Object with respect to Object-Oriented Programming. Give a suitable example.
+ans = Object-Oriented Programming (OOP) is a programming paradigm that is based on the concept of objects. In OOP, a class is a blueprint for creating objects, and an object is an instance of a class.
+A class is a template or blueprint that defines the properties and behavior of a group of objects. It defines the attributes and methods that the objects of that class will have. Attributes are the characteristics or properties of an object, while methods are the functions or actions that an object can perform.
+An object is an instance of a class, meaning it is a specific, unique realization of the class. It has its own set of values for the attributes defined in the class and can perform the methods defined in the class.
+For example, let's consider a class called "Car". The Car class may have attributes such as "make", "model", "year", "color", "engine_size", "transmission_type", and methods such as "start", "stop", "accelerate", and "brake".
+Now, suppose we create two objects, car1 and car2, from the Car class. We can set the attributes of car1 and car2 to different values. For example, car1 could have the make "Toyota", model "Corolla", year 2022, color "Blue", engine_size "1.8L", and transmission_type "automatic", while car2 could have the make "Honda", model "Accord", year 2023, color "Red", engine_size "2.0L", and transmission_type "manual".
+We can also call the methods of car1 and car2. For example, we could call the "start" method of car1 to start the engine, and the "accelerate" method of car2 to speed up the car.
+In summary, a class is a blueprint for creating objects, and an object is an instance of a class with its own set of attributes and methods.
+
+
+
+
+Q2. Name the four pillars of OOPs.
+ans = The four pillars of Object-Oriented Programming (OOPs) are:
+Encapsulation: This refers to the technique of hiding the complexity of the internal workings of an object from the outside world, and exposing only what is necessary for the user to interact with the object. Encapsulation is achieved by using access modifiers like public, private, and protected to control access to the internal data and methods of an object.
+Inheritance: This refers to the ability of a class to inherit properties and methods from a parent class. Inheritance allows for the creation of a hierarchy of classes that share common characteristics, with each child class inheriting from its parent and adding its own unique features.
+Polymorphism: This refers to the ability of an object to take on many forms or have multiple behaviors. Polymorphism allows for the creation of code that can work with objects of different classes, as long as those objects share a common interface or inheritance hierarchy.
+Abstraction: This refers to the technique of hiding complex implementation details and exposing only the necessary features or functionality to the user. Abstraction is achieved by using abstract classes and interfaces, which define a set of methods that must be implemented by any concrete class that inherits from them.
+
+
+
+
+Q3. Explain why the __init__() function is used. Give a suitable example.
+In Object-Oriented Programming (OOP), the __init__() function is a special method that is called automatically when an object of a class is created. It is used to initialize the attributes of the object to their initial values.
+
+The __init__() method takes self as its first parameter, followed by any other parameters that are necessary to initialize the object. self refers to the instance of the object that is being created, and is automatically passed as the first parameter when the __init__() method is called.
+
+Here's an example:
+class Car:
+    def __init__(self, make, model, year, color):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.color = color
+
+car1 = Car("Toyota", "Corolla", 2022, "Blue")
+car2 = Car("Honda", "Accord", 2023, "Red")
+In this example, we have a class called Car with an __init__() method. The method takes four parameters: make, model, year, and color. These parameters are used to initialize the attributes of the Car object.
+
+When we create a new Car object using the Car() constructor, the __init__() method is automatically called with the values that we pass as arguments. For example, car1 = Car("Toyota", "Corolla", 2022, "Blue") creates a new Car object called car1 with the make attribute set to "Toyota", the model attribute set to "Corolla", the year attribute set to 2022, and the color attribute set to "Blue".
+
+The __init__() method is important because it allows us to initialize the attributes of an object to their initial values when the object is created. This ensures that the object has the correct values for its attributes from the beginning, and helps to prevent errors or unexpected behavior later on in the program.
+
+
+Q4. Why self is used in OOPs?
+In Object-Oriented Programming (OOP), self is a reference to the instance of a class that is currently being manipulated. It is used to access the attributes and methods of the object within the class.
+
+When a method of a class is called, the instance of the class on which the method is called is automatically passed as the first argument to the method. This first argument is typically named self, but it can be any valid variable name. The self parameter allows the method to access and modify the attributes of the object.
+
+
+
+
+Q5. What is inheritance? Give an example for each type of inheritance.
+Inheritance is one of the fundamental concepts of Object-Oriented Programming (OOP) that allows a new class to be based on an existing class, inheriting its attributes and methods. The existing class is called the base class or parent class, and the new class is called the derived class or child class.
+
+There are four types of inheritance in Python:
+
+Single inheritance
+Multiple inheritance
+Multi-level inheritance
+Hierarchical inheritance
+Here's an example for each type of inheritance:
+
+1 Single Inheritance
+Single inheritance is when a derived class inherits from a single base class. The derived class inherits all the attributes and methods of the base class.
+class Vehicle:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def start_engine(self):
+        print("Starting the engine")
+
+class Car(Vehicle):
+    def __init__(self, make, model, year, color):
+        super().__init__(make, model, year)
+        self.color = color
+
+car1 = Car("Toyota", "Corolla", 2022, "Blue")
+print(car1.make)  # Output: Toyota
+car1.start_engine()  # Output: Starting the engine
+
+In this example, we have a base class called Vehicle with an __init__() method and a start_engine() method. We also have a derived class called Car that inherits from the Vehicle class using the syntax class Car(Vehicle):.
+
+The Car class has an __init__() method that calls the __init__() method of the Vehicle class using super().__init__(make, model, year), and adds an additional attribute color.
+
+When we create a new Car object using the Car() constructor, the __init__() method of the Car class is called with the values that we pass as arguments. The super().__init__() call in the Car class initializes the make, model, and year attributes of the Car object by calling the __init__() method of the Vehicle class.
+
+2 Multiple Inheritance
+Multiple inheritance is when a derived class inherits from multiple base classes. The derived class inherits all the attributes and methods of all the base classes.
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        pass
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow!"
+
+class DogCat(Dog, Cat):
+    pass
+
+dogcat1 = DogCat("Buddy")
+print(dogcat1.speak())  # Output: Woof!
+In this example, we have three classes: Animal, Dog, and Cat. The Animal class has an __init__() method and a speak() method that does nothing. The Dog class and the Cat class both inherit from the Animal class and override the speak() method with their own implementation.
+
+We also have a derived class called DogCat that inherits from both the Dog class and the Cat class. The DogCat class does not have any additional methods or attributes.
+
+When we create a new DogCat object using the DogCat() constructor, the __init__() method of the Animal class is called with the value that we pass as an argument. The speak() method of the Dog class
+3 Multi-level Inheritance
+Multi-level inheritance is when a derived class inherits from a base class, which itself inherits from another base class. The derived class inherits all the attributes and methods of both the base classes.
+class Vehicle:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def start_engine(self):
+        print("Starting the engine")
+
+class Car(Vehicle):
+    def __init__(self, make, model, year, color):
+        super().__init__(make, model, year)
+        self.color = color
+
+class ElectricCar(Car):
+    def __init__(self, make, model, year, color, battery_size):
+        super().__init__(make, model, year, color)
+        self.battery_size = battery_size
+
+    def charge_battery(self):
+        print("Charging the battery")
+
+electric_car1 = ElectricCar("Tesla", "Model S", 2022, "Black", 100)
+print(electric_car1.make)  # Output: Tesla
+electric_car1.start_engine()  # Output: Starting the engine
+electric_car1.charge_battery()  # Output: Charging the battery
+In this example, we have a base class called Vehicle with an __init__() method and a start_engine() method. We also have a derived class called Car that inherits from the Vehicle class, and a second derived class called ElectricCar that inherits from the Car class.
+
+The ElectricCar class has an __init__() method that calls the __init__() method of the Car class using super().__init__(make, model, year, color), and adds an additional attribute battery_size. The ElectricCar class also has a charge_battery() method.
+
+When we create a new ElectricCar object using the ElectricCar() constructor, the __init__() method of the ElectricCar class is called with the values that we pass as arguments. The super().__init__() call in the ElectricCar class initializes the make, model, year, and color attributes of the ElectricCar object by calling the __init__() method of the Car class, which in turn calls the __init__() method of the Vehicle class.
+
+4 Hierarchical Inheritance
+Hierarchical inheritance is when multiple derived classes inherit from a single base class. Each derived class inherits all the attributes and methods of the base class.
+class Shape:
+    def __init__(self, color):
+        self.color = color
+
+    def draw(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, color, radius):
+        super().__init__(color)
+        self.radius = radius
+
+    def draw(self):
+        print(f"Drawing a {self.color} circle with radius {self.radius}")
+
+class Rectangle(Shape):
+    def __init__(self, color, width, height):
+        super().__init__(color)
+        self.width = width
+        self.height = height
+
+    def draw(self):
+        print(f"Drawing a {self.color} rectangle with width {self.width} and height {self.height}")
+
+circle1 = Circle("Red", 5)
+rectangle1 = Rectangle("Blue", 10, 20)
+circle1.draw()  # Output: Drawing a Red circle with radius 5
+rectangle1.draw()  # Output: Drawing a Blue rectangle with width 10 and height 20
+In this example, we have a base class called Shape with an `__
+
+
+
